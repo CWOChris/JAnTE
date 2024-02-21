@@ -7,15 +7,18 @@ const { precacheAndRoute } = require('workbox-precaching/precacheAndRoute');
 
 precacheAndRoute(self.__WB_MANIFEST);
 
-registerRoute({
-  cacheName: 'html-cache',
-  plugins: [
-    new ExpirationPlugin({
-      maxEntries: 10,
-      maxAgeSeconds: 7 * 24 * 60 * 60,
-    }),
-  ],
-});
+registerRoute(
+  ({ request}) => request.destination === 'document',
+  new CacheFirst({
+    cacheName: 'html-cache',
+    plugins: [
+      new ExpirationPlugin({
+        maxEntries: 10,
+        maxAgeSeconds: 7 * 24 * 60 * 60,
+      }),
+    ],
+  })
+);
 
 registerRoute(
   /\.(?:css|js|png|jpg|jpeg|svg|gif)$/,
