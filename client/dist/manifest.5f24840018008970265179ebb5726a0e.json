@@ -1,0 +1,10 @@
+{
+  "name": "JAnTE",
+  "short_name": "JAnTE",
+  "orientation": "portrait",
+  "display": "standalone",
+  "start_url": ".",
+  "description": "JAnTE is a PWA text editor designed for offline use.",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
